@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Special Question ❤️</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fff0f3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(255, 75, 110, 0.2);
+            z-index: 1;
+            max-width: 90%;
+        }
+        h1 { color: #ff4b6e; font-size: 2.2rem; }
+        .buttons { margin-top: 30px; min-height: 80px; position: relative; }
+        button {
+            font-size: 1.2rem;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
+        #yesBtn { background-color: #ff4b6e; color: white; }
+        #noBtn { background-color: #adb5bd; color: white; position: absolute; }
+        
+        #celebration { display: none; text-align: center; }
+        img { width: 100%; max-width: 400px; border-radius: 20px; margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+    <audio id="cheerSound" src="https://www.myinstants.com/media/sounds/cheering.mp3" preload="auto"></audio>
+
+    <div class="container" id="mainCard">
+        <h1>Will you be my Valentine? ❤️</h1>
+        <div class="buttons">
+            <button id="yesBtn" onclick="sayYes()">YES</button>
+            <button id="noBtn" onmouseover="moveButton()" onclick="moveButton()">NO</button>
+        </div>
+    </div>
+
+    <div id="celebration">
+        <h1 style="color: #ff4b6e;">YOU GET A VALENTINE! 🎉</h1>
+        <img src="https://media.tenor.com/722G4U6-pXMAAAAC/oprah-celebration.gif" alt="Oprah Celebrating">
+        <p style="font-size: 1.5rem; color: #ff4b6e; margin-top: 15px;">(Listen to the crowd! 🔊)</p>
+    </div>
+
+    <script>
+        function moveButton() {
+            const btn = document.getElementById('noBtn');
+            const x = Math.random() * (window.innerWidth - btn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - btn.offsetHeight);
+            btn.style.left = x + 'px';
+            btn.style.top = y + 'px';
+        }
+
+        function sayYes() {
+            // Play the cheer sound
+            const sound = document.getElementById('cheerSound');
+            sound.play();
+
+            // Switch views
+            document.getElementById('mainCard').style.display = 'none';
+            document.getElementById('celebration').style.display = 'block';
+            
+            // Basic confetti effect
+            document.body.style.backgroundColor = "#ffdee9";
+        }
+    </script>
+</body>
+</html>
